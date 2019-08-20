@@ -14,5 +14,8 @@
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "zip-webpack-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "typograf": "^6.8.2"
   }
 }

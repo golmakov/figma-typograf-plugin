@@ -5,6 +5,7 @@ const path = require('path')
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
+  devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
   entry: {
     code: './src/code.js', // The entry point for your plugin code
