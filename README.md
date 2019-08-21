@@ -1,4 +1,4 @@
-# Typograf plugin for Figma
+# Typograf Plugin for Figma
 
 Figma plugin for making good typographic text.
 
@@ -13,11 +13,15 @@ Figma plugin for making good typographic text.
 
 It's based on the [Typograf JS](https://github.com/typograf/typograf) library.
 
-## Install instructions
+[По-русски 🇷🇺](./docs/readme-RU.md)
+
+## Install Instructions
 
 [Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.0.0/figma-typograf-plugin.zip) and extract contents.
 
 Open the Figma Desktop, select `Plugins` click `Create your own plugin` -> `Click to choose a manifest.json file` and find the `manifest.json` file in the plugin directory.
+
+
 
 ## Development
 
@@ -34,3 +38,8 @@ Install dependencies & build files
 npm install
 npm run dev
 ```
+
+## To Do
+
+[] Support text layers with mixed style
+[] Rules customization
