@@ -19,7 +19,7 @@ If you like this plugin, you could [buy me a coffe](https://rocketbank.ru/aleksa
 
 ## Install Instructions
 
-[Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.0.0/figma-typograf-plugin.zip) and extract contents.
+[Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.0.1/figma-typograf-plugin.zip) and extract contents.
 
 Open the Figma Desktop, select `Plugins` click `Create your own plugin` -> `Click to choose a manifest.json file` and find the `manifest.json` file in the plugin directory.
 

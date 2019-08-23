@@ -1,6 +1,6 @@
 {
   "name": "figma-typograf-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Figma plugin for making good typographic text",
   "main": "./src/code.js",
   "scripts": {
