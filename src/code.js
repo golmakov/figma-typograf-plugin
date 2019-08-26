@@ -16,6 +16,60 @@ function haveMixedStyle(obj, start = 0, end) {
            obj.getRangeFillStyleId(start, end) === figma.mixed;
 }
 
+function getTextnodeStyle(obj, start = 0, end) {
+    if (end === undefined) { 
+        end = obj.characters.length;
+    }
+    let style = {};
+
+    style.FontName = obj.getRangeFontName(start, end);
+    style.FontSize = obj.getRangeFontSize(start, end);
+    style.TextCase = obj.getRangeTextCase(start, end);
+    style.TextDecoration = obj.getRangeTextDecoration(start, end);
+    style.LetterSpacing = obj.getRangeLetterSpacing(start, end);
+    style.LineHeight = obj.getRangeLineHeight(start, end);
+    style.Fills = obj.getRangeFills(start, end);
+    style.TextStyleId = obj.getRangeTextStyleId(start, end);
+    style.FillStyleId = obj.getRangeFillStyleId(start, end);
+
+    return style;    
+}
+
+function saveTextnodeStyle(obj) {
+    let t0 = performance.now();
+    let end = obj.characters.length;
+    let test = end;
+    let start = 0;
+    style = [];
+    while (start != end) {
+        console.log(start,test,end)
+        if (test == start) {
+            test = end;
+        }
+        test = Math.floor((start + test)/2);
+        if (haveMixedStyle(obj, start, test) === false) {
+            style.push({
+                start: start,
+                end: test,
+                style: getTextnodeStyle(obj, start, test)
+            })
+            if (haveMixedStyle(obj, test, end) === false) {
+                style.push({
+                    start: test,
+                    end: end,
+                    style: getTextnodeStyle(obj,  test, end)
+                })
+                start = end;
+            } else {
+                start = test;
+            }
+        }
+    }
+    let t1 = performance.now();
+    console.log('Took', (t1 - t0).toFixed(4));
+    return style;
+}
+
 // Фигма требует, чтобы перед любыми операциями с текстом, происходила асинхронная загрузка шрифта — https://www.figma.com/plugin-docs/api/TextNode/
 async function typografText(obj) {
     if (obj.hasMissingFont != true) {
