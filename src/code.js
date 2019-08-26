@@ -1,8 +1,19 @@
 import * as Typograf from '../node_modules/typograf/dist/typograf.min.js';
 const tp = new Typograf({locale: ['ru', 'en-US']});
 
-function haveMixedStyle(obj) {
-    return obj.fontName === figma.mixed || obj.fontSize === figma.mixed || obj.textCase === figma.mixed || obj.textDecoration === figma.mixed || obj.letterSpacing === figma.mixed || obj.lineHeight === figma.mixed || obj.textStyleId === figma.mixed;
+function haveMixedStyle(obj, start = 0, end) {
+    if (end === undefined) { 
+        end = obj.characters.length;
+    }
+    return obj.getRangeFontName(start, end) === figma.mixed ||
+           obj.getRangeFontSize(start, end) === figma.mixed || 
+           obj.getRangeTextCase(start, end) === figma.mixed || 
+           obj.getRangeTextDecoration(start, end) === figma.mixed || 
+           obj.getRangeLetterSpacing(start, end) === figma.mixed || 
+           obj.getRangeLineHeight(start, end) === figma.mixed || 
+           obj.getRangeFills(start, end) === figma.mixed ||
+           obj.getRangeTextStyleId(start, end) === figma.mixed ||
+           obj.getRangeFillStyleId(start, end) === figma.mixed;
 }
 
 // Фигма требует, чтобы перед любыми операциями с текстом, происходила асинхронная загрузка шрифта — https://www.figma.com/plugin-docs/api/TextNode/
