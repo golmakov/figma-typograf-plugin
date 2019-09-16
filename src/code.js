@@ -35,38 +35,37 @@ function getTextnodeStyle(obj, start = 0, end) {
     return style;    
 }
 
+function findStyleBorder(obj, start, left, right) {
+    if (haveMixedStyle(obj, start, right)) {
+        let mid = Math.floor((left + right)/2);
+        if (haveMixedStyle(obj, start, mid) === false) {
+            if (haveMixedStyle(obj, start, mid +1) || mid === right) {
+                return mid;
+            } else {
+                return findStyleBorder(obj, start, mid+1, right);
+            }
+        } else {
+            return findStyleBorder(obj, start, left, mid);
+        }
+    } else {
+        return right;
+    }
+}
+
 function saveTextnodeStyle(obj) {
-    let t0 = performance.now();
     let end = obj.characters.length;
-    let test = end;
     let start = 0;
     style = [];
-    while (start != end) {
-        console.log(start,test,end)
-        if (test == start) {
-            test = end;
-        }
-        test = Math.floor((start + test)/2);
-        if (haveMixedStyle(obj, start, test) === false) {
-            style.push({
-                start: start,
-                end: test,
-                style: getTextnodeStyle(obj, start, test)
-            })
-            if (haveMixedStyle(obj, test, end) === false) {
-                style.push({
-                    start: test,
-                    end: end,
-                    style: getTextnodeStyle(obj,  test, end)
-                })
-                start = end;
-            } else {
-                start = test;
-            }
-        }
+
+    while (start < end) {
+        let border = findStyleBorder(obj, start, start, end);
+        style.push({
+            start: start,
+            end: border,
+            style: getTextnodeStyle(obj, start, border)
+        });
+        start = border;
     }
-    let t1 = performance.now();
-    console.log('Took', (t1 - t0).toFixed(4));
     return style;
 }
 
