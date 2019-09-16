@@ -69,7 +69,29 @@ function saveTextnodeStyle(obj) {
     return style;
 }
 
-// Фигма требует, чтобы перед любыми операциями с текстом, происходила асинхронная загрузка шрифта — https://www.figma.com/plugin-docs/api/TextNode/
+function applyTextnodeStyles(obj, styles) {
+    styles.forEach(async function(st) {
+        // Фигма требует, чтобы перед любыми операциями с текстом, происходила асинхронная загрузка шрифта — https://www.figma.com/plugin-docs/api/TextNode/
+        await figma.loadFontAsync(st.style.FontName);
+        obj.setRangeFontName(st.start, st.end, st.style.FontName);
+        obj.setRangeFontSize(st.start, st.end, st.style.FontSize);
+        obj.setRangeTextCase(st.start, st.end, st.style.TextCase);
+        obj.setRangeTextDecoration(st.start, st.end, st.style.TextDecoration);
+        obj.setRangeLetterSpacing(st.start, st.end, st.style.LetterSpacing);
+        obj.setRangeLineHeight(st.start, st.end, st.style.LineHeight);
+        obj.setRangeFills(st.start, st.end, st.style.Fills);
+        obj.setRangeTextStyleId(st.start, st.end, st.style.TextStyleId);
+        obj.setRangeFillStyleId(st.start, st.end, st.style.FillStyleId);
+    })
+}
+
+function loadFontsFromStyles(styles) {
+    styles.forEach(async function(st) { 
+        await figma.loadFontAsync(st.style.FontName);
+    })
+}
+
+
 async function typografText(obj) {
     if (obj.hasMissingFont != true) {
         if (haveMixedStyle(obj) === false) {
