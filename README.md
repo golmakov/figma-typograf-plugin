@@ -6,10 +6,9 @@ Figma plugin for making good typographic text.
 
 * Removes hanging conjunctions.
 * Connects the number and the unit with non-breaking space.
-* Puts right quotes “outside and ‘inside’ proposals” instead programmers “ " ”.
-* Removes double-spaces, double-enters, double-dots.
-* Makes ©, ®, ™ from (c), -- turns to — , -> transforms to →, makes ≠ from !=, mm3 turns to mm³.
-* Removes spaces at $50 and puts non-breaking spaces at 100 % or 50 €.
+* Puts right quotes “outside and ‘inside’ proposals” instead  of " and '.
+* Removes double-spaces, double-dots.
+* Makes ©, ®, ™ from (c), -- turns to — , -> transforms to → mm3 turns to mm³.
 * [And more](https://github.com/typograf/typograf/blob/dev/docs/RULES.en-US.md).
 
 It's based on the [Typograf JS](https://github.com/typograf/typograf) library.
@@ -19,7 +18,7 @@ If you like this plugin, you could [buy me a coffe](https://rocketbank.ru/aleksa
 
 ## Install Instructions
 
-[Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.0.1/figma-typograf-plugin.zip) and extract contents.
+[Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.1.0/figma-typograf-plugin.zip) and extract contents.
 
 Open the Figma Desktop, select `Plugins` click `Create your own plugin` -> `Click to choose a manifest.json file` and find the `manifest.json` file in the plugin directory.
 
@@ -53,7 +52,6 @@ npm run dev
 
 ## To Do
 
-- [ ] Support text layers with mixed style
 - [ ] Rules customization
 
 
