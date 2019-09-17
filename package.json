@@ -1,6 +1,6 @@
 {
   "name": "figma-typograf-plugin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Figma plugin for making good typographic text",
   "main": "./src/code.js",
   "scripts": {
@@ -9,6 +9,10 @@
   },
   "author": "Aleksander Golmakov <golmakov@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/golmakov/figma-typograf-plugin.git"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.4",
     "webpack": "^4.39.2",
@@ -16,6 +20,7 @@
     "zip-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
+    "text-diff": "^1.0.1",
     "typograf": "^6.8.2"
   }
 }

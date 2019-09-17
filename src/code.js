@@ -1,6 +1,9 @@
 import * as Typograf from '../node_modules/typograf/dist/typograf.min.js';
 const tp = new Typograf({locale: ['ru', 'en-US']});
 
+const Diff = require('text-diff');
+const diff = new Diff();
+
 function haveMixedStyle(obj, start = 0, end) {
     if (end === undefined) { 
         end = obj.characters.length;
@@ -91,13 +94,45 @@ async function loadFontsFromStyles(styles) {
     }
 }
 
+function adjustStylesPositions(styles, textDiff) {
+    console.log(textDiff)
+    let position = 0;
+    let correction = 0;
+    let adjusted = [];
+
+    for (let st of styles) {
+        console.log('pos ', position, 'cor', correction, 'st', st.start, 'en', st.end)
+        st.start = st.start + correction;
+        while (position <= st.end) {
+            let d = textDiff.shift();
+            console.log(d)
+            if (d === undefined) {
+                break;
+            }
+            correction = correction + d[0]*d[1].length;
+            position = position + (d[0] == 0 ? d[1].length : d[0]*d[1].length);
+        }
+        st.end = st.end + correction;
+        console.log('New st', st.start, 'en', st.end)
+        adjusted.push(st);
+    }
+
+    return adjusted;
+}
+
 
 async function typografText(obj) {
     if (obj.hasMissingFont != true) {
         let styles = saveTextnodeStyle(obj);
         await loadFontsFromStyles(styles).then(() => {
-            obj.characters = tp.execute(obj.characters);
-            applyTextnodeStyles(obj, styles);
+            const text = obj.characters;
+            const newText = tp.execute(text);
+            let textDiff = diff.main(text, newText);
+            const newStyles = adjustStylesPositions(styles, textDiff);
+            console.log(newStyles)
+
+            obj.characters = newText;
+            applyTextnodeStyles(obj, newStyles);
         });
     } else {
         figma.closePlugin("Text with missing fonts can't be typografed");
