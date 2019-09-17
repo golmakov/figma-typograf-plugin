@@ -55,7 +55,7 @@ function findStyleBorder(obj, start, left, right) {
 function saveTextnodeStyle(obj) {
     let end = obj.characters.length;
     let start = 0;
-    style = [];
+    let style = [];
 
     while (start < end) {
         let border = findStyleBorder(obj, start, start, end);
@@ -85,21 +85,20 @@ function applyTextnodeStyles(obj, styles) {
     })
 }
 
-function loadFontsFromStyles(styles) {
-    styles.forEach(async function(st) { 
+async function loadFontsFromStyles(styles) {
+    for (const st of styles) {
         await figma.loadFontAsync(st.style.FontName);
-    })
+    }
 }
 
 
 async function typografText(obj) {
     if (obj.hasMissingFont != true) {
-        if (haveMixedStyle(obj) === false) {
-            await figma.loadFontAsync(obj.fontName);
+        let styles = saveTextnodeStyle(obj);
+        await loadFontsFromStyles(styles).then(() => {
             obj.characters = tp.execute(obj.characters);
-        } else {
-            figma.closePlugin("Mixed text styles can't be typografed");
-        }
+            applyTextnodeStyles(obj, styles);
+        });
     } else {
         figma.closePlugin("Text with missing fonts can't be typografed");
     }
@@ -109,7 +108,8 @@ const selection = figma.currentPage.selection.filter(layer => layer.type === 'TE
 if (selection.length === 0) {
     figma.closePlugin("Select at least 1 text layer");
 } else {
-    selection.forEach(typografText);
+    const promises = selection.map(typografText);
+    Promise.all(promises).then(resolve => {
+        figma.closePlugin();
+    });
 }
-
-figma.closePlugin();
