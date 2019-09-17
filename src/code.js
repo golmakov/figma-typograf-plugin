@@ -95,17 +95,14 @@ async function loadFontsFromStyles(styles) {
 }
 
 function adjustStylesPositions(styles, textDiff) {
-    console.log(textDiff)
     let position = 0;
     let correction = 0;
     let adjusted = [];
 
     for (let st of styles) {
-        console.log('pos ', position, 'cor', correction, 'st', st.start, 'en', st.end)
         st.start = st.start + correction;
         while (position <= st.end) {
             let d = textDiff.shift();
-            console.log(d)
             if (d === undefined) {
                 break;
             }
@@ -113,7 +110,6 @@ function adjustStylesPositions(styles, textDiff) {
             position = position + (d[0] == 0 ? d[1].length : d[0]*d[1].length);
         }
         st.end = st.end + correction;
-        console.log('New st', st.start, 'en', st.end)
         adjusted.push(st);
     }
 
@@ -129,7 +125,6 @@ async function typografText(obj) {
             const newText = tp.execute(text);
             let textDiff = diff.main(text, newText);
             const newStyles = adjustStylesPositions(styles, textDiff);
-            console.log(newStyles)
 
             obj.characters = newText;
             applyTextnodeStyles(obj, newStyles);
