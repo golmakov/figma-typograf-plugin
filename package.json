@@ -4,6 +4,7 @@
   "description": "Figma plugin for making good typographic text",
   "main": "./src/code.js",
   "scripts": {
+    "dev-ui": "webpack-dev-server --content-base dist",
     "dev": "webpack --mode=development --watch",
     "build": "webpack --mode=production"
   },
@@ -15,8 +16,17 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.4",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
+    "css-loader": "^3.2.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "style-loader": "^1.0.0",
+    "svelte": "^3.12.1",
+    "svelte-loader": "^2.13.6",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1",
     "zip-webpack-plugin": "^3.0.0"
   },
   "dependencies": {

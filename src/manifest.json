@@ -2,5 +2,6 @@
   "name": "Typograf",
   "id": "745519632050796775",
   "api": "1.0.0",
-  "main": "code.js"
+  "main": "code.js",
+  "ui": "ui.html"
 }

@@ -51,6 +51,12 @@ npm install
 npm run dev
 ```
 
+Run UI code in browser
+
+```bash
+npm run dev-ui
+```
+
 ## To Do
 
 - [ ] Support text layers with mixed style
