@@ -134,12 +134,25 @@ async function typografText(obj) {
     }
 }
 
-const selection = figma.currentPage.selection.filter(layer => layer.type === 'TEXT');
-if (selection.length === 0) {
-    figma.closePlugin("Select at least 1 text layer");
-} else {
-    const promises = selection.map(typografText);
-    Promise.all(promises).then(resolve => {
-        figma.closePlugin();
-    });
+function run() {
+    const selection = figma.currentPage.selection.filter(layer => layer.type === 'TEXT');
+    if (selection.length === 0) {
+        figma.closePlugin("Select at least 1 text layer");
+    } else {
+        const promises = selection.map(typografText);
+        Promise.all(promises).then(resolve => {
+            figma.closePlugin();
+        });
+    }
+}
+
+function showUI() {
+    figma.showUI(__html__, {width: 760, height: 600});
+}
+
+let cmd = figma.command;
+if (cmd == 'run') {
+    run();
+} else if (cmd == 'settings') {
+    showUI();
 }

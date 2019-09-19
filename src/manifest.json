@@ -3,5 +3,15 @@
   "id": "745519632050796775",
   "api": "1.0.0",
   "main": "code.js",
-  "ui": "ui.html"
+  "ui": "ui.html",
+  "menu": [
+    {
+      "name": "Typograf Text",
+      "command": "run"
+    },
+    {
+      "name": "Settings...",
+      "command": "settings"
+    }
+  ]
 }
