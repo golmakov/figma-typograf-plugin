@@ -5,6 +5,7 @@
   "main": "./src/code.js",
   "scripts": {
     "dev": "webpack --mode=development --watch",
+    "clean": "rm -rf dist",
     "build": "webpack --mode=production"
   },
   "author": "Aleksander Golmakov <golmakov@gmail.com>",
