@@ -18,9 +18,7 @@ If you like this plugin, you could [buy me a coffe](https://rocketbank.ru/aleksa
 
 ## Install Instructions
 
-[Download the ZIP file](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.1.0/figma-typograf-plugin.zip) and extract contents.
-
-Open the Figma Desktop, select `Plugins` click `Create your own plugin` -> `Click to choose a manifest.json file` and find the `manifest.json` file in the plugin directory.
+Open [plugin page](https://www.figma.com/c/plugin/745519632050796775/Typograf) and click Install button.
 
 ### Keyboard Shortcut
 
@@ -33,6 +31,7 @@ If you're using MacOS, you can add custom keyboard shortcut.
 3. Select Figma from `Applications`, type `Typograf` in the `Menu Title`, select `Keyboard Shortcut` field and press your keayboard shortcut buttons.
 
 I've had hotkey set up as **Ctrl+T**.
+
 
 ## Development
 
@@ -49,6 +48,8 @@ Install dependencies & build files
 npm install
 npm run dev
 ```
+
+Open the Figma Desktop, select `Plugins` click `Create your own plugin` -> `Click to choose a manifest.json file` and find the `manifest.json` file in the `dist` directory.
 
 ## To Do
 

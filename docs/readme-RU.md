@@ -14,9 +14,7 @@
 
 ## Установка
 
-[Скачайте архив](https://github.com/golmakov/figma-typograf-plugin/releases/download/v1.1.0/figma-typograf-plugin.zip) и распакуйте в какую-нибудь папку.
-
-Откройте десктопное приложение Фигмы, перейдите в раздел `Plugins` нажмите `Create your own plugin` -> `Click to choose a manifest.json file` и выберите файл `manifest.json` в папке плагина.
+Откройте [страницу плагина](https://www.figma.com/c/plugin/745519632050796775/Typograf) в каталоге и нажмите кнопку `Install`
 
 ### Горячие клавиши
 
@@ -47,6 +45,8 @@ cd figma-typograf-plugin
 npm install
 npm run dev
 ```
+
+Откройте десктопное приложение Фигмы, перейдите в раздел `Plugins` нажмите `Create your own plugin` -> `Click to choose a manifest.json file` и выберите файл `manifest.json` в папке `dist`.
 
 ## Планы на будущее
 
