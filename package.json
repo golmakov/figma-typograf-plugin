@@ -15,22 +15,22 @@
     "url": "git+https://github.com/golmakov/figma-typograf-plugin.git"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "^3.2.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "css-loader": "^3.2.1",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "style-loader": "^1.0.0",
-    "svelte": "^3.12.1",
+    "style-loader": "^1.0.1",
+    "svelte": "^3.16.0",
     "svelte-loader": "^2.13.6",
-    "url-loader": "^2.1.0",
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1",
+    "url-loader": "^2.3.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
     "zip-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
     "text-diff": "^1.0.1",
-    "typograf": "^6.8.2"
+    "typograf": "^6.10.0"
   }
 }
