@@ -1,4 +1,4 @@
-import * as Typograf from '../node_modules/typograf/dist/typograf.min.js';
+const Typograf = require('typograf');
 const tp = new Typograf({locale: ['ru', 'en-US']});
 
 const Diff = require('text-diff');

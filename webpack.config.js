@@ -25,9 +25,11 @@ module.exports = (env, argv) => ({
 
   // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
   plugins: [
-    new CopyPlugin([
+    new CopyPlugin({
+      patterns: [
         { from: './src/manifest.json', to: './' }
-    ]),
+      ],
+    }),
     new ZipPlugin({
         filename: 'figma-typograf-plugin.zip',
         include: [ 'code.js', 'manifest.json'],
